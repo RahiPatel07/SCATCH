@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Scatch - Shop</title>
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -12,17 +12,18 @@
   </head>
 
   <body class="font-['helvetica_now_display']">
-    <nav class="w-full flex justify-between px-5 py-3">
-      <h3 class="text-xl">Scatch</h3>
+    <nav class="w-full flex justify-between px-5 py-3 border-b">
+      <h3 class="text-xl font-semibold">Scatch</h3>
       <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
       <% if(loggedin){ %>
         <div class="flex gap-5">
-            <a href="/shop">Shop</a>
-            <a href="/cart">Cart</a>
-            <a href="/profile">My Account</a>
-            <a class="text-red-600" href="/users/logout">Logout</a>
+            <a href="/shop" class="hover:text-blue-500">Shop</a>
+            <a href="/cart" class="hover:text-blue-500">Cart</a>
+            <a href="/orders" class="hover:text-blue-500">Orders</a>
+            <a href="/profile" class="hover:text-blue-500">My Account</a>
+            <a class="text-red-600 hover:text-red-700" href="/users/logout">Logout</a>
         </div>
-    </nav>
       <% } %>
+    </nav>
   </body>
 </html>

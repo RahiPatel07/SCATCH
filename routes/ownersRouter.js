@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ownerModel = require('../models/owner-model');
+const productModel = require('../models/product-model');
 
 if(process.env.NODE_ENV === 'development'){
     router.post('/create', async (req, res) => {
@@ -22,7 +23,18 @@ if(process.env.NODE_ENV === 'development'){
     });
 }
 
-router.get("/admin", function (req, res) {
+// All Products page
+router.get("/admin", async function (req, res) {
+  try {
+    let products = await productModel.find();
+    res.render("admin", { products });
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+// Create new product page
+router.get("/admin/create", function (req, res) {
   let success = req.flash("success");
   res.render("createproducts", { success: success.length > 0 ? success[0] : "" });
 });

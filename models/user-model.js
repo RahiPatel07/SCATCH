@@ -14,10 +14,28 @@ const userSchema = mongoose.Schema({
             ref: "product",
         }
     ],
-    orders: {
-        type: Array,
-        default: [],
-    },
+    orders: [
+        {
+            order_id: String,
+            payment_id: String,
+            products: [
+                {
+                    _id: mongoose.Schema.Types.ObjectId,
+                    name: String,
+                    price: Number,
+                    discount: Number,
+                    image: String,
+                    category: String,
+                    description: String
+                }
+            ],
+            total_amount: Number,
+            date: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ],
     contact: Number,
     picture: String,
 });

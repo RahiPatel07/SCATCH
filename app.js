@@ -1,3 +1,6 @@
+// IMPORTANT: Load dotenv FIRST before anything else
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
@@ -9,20 +12,20 @@ const productsRouter = require('./routes/productsRouter');
 const indexRouter = require('./routes/index');
 const expressSession = require("express-session");
 const flash = require("connect-flash");
-require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Session configuration - MUST come before flash
 app.use(
     expressSession({
         resave: false,
         saveUninitialized: false,
-        secret: "your-secret-key-here" // Change this to a random string
+        secret: process.env.SESSION_SECRET || "your-secret-key-here"
     })
 );
 
@@ -35,4 +38,6 @@ app.use('/owners', ownersRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('✅ Server running on http://localhost:3000');
+});
