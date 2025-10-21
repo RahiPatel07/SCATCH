@@ -1,4 +1,3 @@
-// IMPORTANT: Load dotenv FIRST before anything else
 require('dotenv').config();
 
 const express = require('express');
@@ -38,6 +37,8 @@ app.use('/owners', ownersRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-app.listen(3000, () => {
-    console.log('✅ Server running on http://localhost:3000');
+// FIXED: Use PORT from environment variable (required for Render)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
 });
