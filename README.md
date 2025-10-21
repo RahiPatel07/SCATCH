@@ -1,5 +1,6 @@
 <div align="center">
-  <h3 align="center">Scatch: Shop Trendy Bags</h3>
+  <h3 align="center" href="https://scatch-app-nz4a.onrender.com">Scatch: Shop Trendy Bags</h3>
+  <h2>Tap on the above link and checkout preview</h2>
 </div>
 
 ## 📋 <a name="table">Table of Contents</a>
